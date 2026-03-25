@@ -9,33 +9,54 @@ The system processes time-series data and uses predictive models to assist users
 
 ✨ Features:
 
-📈 Stock price prediction using ML/DL models
-🧠 LSTM-based time-series forecasting
-🔐 User authentication system
-⚡ REST API backend
-📊 Interactive frontend dashboard
-🗂️ Clean full-stack architecture
+   📈 Stock price prediction using ML/DL models
+   
+   🧠 LSTM-based time-series 
+   
+   🔐 User authentication system
+   
+   ⚡ REST API backend
+   
+   📊 Interactive frontend dashboard
+   
+   🗂️ Clean full-stack architecture
+   
 
 🏗️ Tech Stack:
 
 🔹 Frontend
-React.js
-JavaScript
-CSS / Tailwind
+
+   React.js
+   
+   JavaScript
+   
+   CSS / Tailwind
+   
 
 🔹 Backend
-Python
-Flask / FastAPI
-REST APIs
+
+   Python
+   
+   Flask / FastAPI
+   
+   REST APIs
+   
 
 🔹 Machine Learning
-Pandas
-NumPy
-Scikit-learn
-TensorFlow / Keras
+
+   Pandas
+   
+   NumPy
+   
+   Scikit-learn
+   
+   TensorFlow / Keras
+   
 
 🔹 Database
-SQLite
+
+   SQLite
+   
 
 📁 Project Structure:
 Stock-price-prediction-model/
@@ -60,80 +81,125 @@ Stock-price-prediction-model/
 ⚙️ Installation & Setup:
 
 🔹 1. Clone the repository
-git clone https://github.com/shivesh754/Stock-price-prediction-model.git
-cd Stock-price-prediction-model
+
+   git clone https://github.com/shivesh754/Stock-price-prediction-model.git
+
+   cd Stock-price-prediction-model
 
 🔹 2. Backend Setup
-cd backend
+
+   cd backend
 
 # Create virtual environment
-python -m venv venv
+
+   python -m venv venv
+   
 # Activate venv
-venv\Scripts\activate
+
+   venv\Scripts\activate
+   
 # Install dependencies
-pip install -r requirements.txt
+
+   pip install -r requirements.txt
 
 🔹 3. Run Backend
-python app.py
+
+    python app.py
 
 🔹 4. Frontend Setup
-cd frontend
-npm install
-npm run dev
+
+    cd frontend
+
+    npm install
+
+    npm run dev
+
 
 🧠 Machine Learning Workflow:
 
-Data Collection (historical stock data)
-Data Preprocessing (cleaning & normalization)
-Feature Engineering
-Model Training (LSTM / Regression)
-Prediction
-Evaluation (RMSE, MAE)
+   Data Collection (historical stock data)
+
+   Data Preprocessing (cleaning & normalization)
+
+   Feature Engineering
+
+   Model Training (LSTM / Regression)
+
+   Prediction
+
+   Evaluation (RMSE, MAE)
+
 👉 LSTM is used because it captures long-term dependencies in time-series data
 
 📊 API Endpoints:
 
-POST /auth/register → Register user
-POST /auth/login → Login user
-GET /stocks → Fetch stock data
-POST /predict → Predict stock price
+   POST /auth/register → Register user
+
+   POST /auth/login → Login user
+
+   GET /stocks → Fetch stock data
+
+   POST /predict → Predict stock price
+
 
 🚫 Ignored Files:
 
-The following files are excluded:
-venv/
-.venv/
-__pycache__/
-*.pyc
-node_modules/
-.env
-*.db
+   The following files are excluded:
+
+    venv/
+
+    .venv/
+
+    __pycache__/
+
+    *.pyc
+
+    node_modules/
+
+    .env
+
+    *.db
+
 
 ⚠️ Limitations:
 
-Stock market is highly unpredictable
-External factors (news, economy) are not fully captured
-Predictions are not 100% accurate
+   Stock market is highly unpredictable
+
+   External factors (news, economy) are not fully captured
+
+   Predictions are not 100% accurate
+
 
 🚀 Future Improvements:
 
-📡 Real-time stock API integration
-📊 Advanced visualization charts
-📰 News sentiment analysis
-☁️ Deployment (AWS / Render / Vercel)
+   📡 Real-time stock API integration
+
+   📊 Advanced visualization charts
+
+   📰 News sentiment analysis
+
+   ☁️ Deployment (AWS / Render / Vercel)
+
 
 🤝 Contributing:
 
-Contributions are welcome!
-Fork the repo
-Create a branch
-Commit changes
-Open a Pull Request
+   Contributions are welcome!
+
+   Fork the repo
+
+   Create a branch
+
+   Commit changes
+
+   Open a Pull Request
+
 
 📜 License:
-This project is for educational purposes.
+
+   This project is for educational purposes.
 
 👨‍💻 Author:
 
-Shiwesh Kumar Mishra
-GitHub: https://github.com/shivesh754
+   Shiwesh Kumar Mishra
+
+   GitHub: https://github.com/shivesh754
