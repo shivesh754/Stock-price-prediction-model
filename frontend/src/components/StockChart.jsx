@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { 
-  LineChart, Line, BarChart, Bar, XAxis, YAxis, CartesianGrid, 
+  LineChart, Line, BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, 
   Tooltip, Legend, ResponsiveContainer, ComposedChart 
 } from 'recharts';
 import { Activity } from 'lucide-react';
@@ -116,7 +116,7 @@ const StockChart = ({ data }) => {
             <Bar dataKey="volume" fill="#8b5cf6" radius={[4, 4, 0, 0]} animationDuration={1500}>
               {chartData.map((entry, index) => {
                 const isPositive = index === 0 || entry.close >= chartData[index - 1].close;
-                return <cell key={`cell-${index}`} fill={isPositive ? '#10B981' : '#EF4444'} />;
+                return <Cell key={`cell-${index}`} fill={isPositive ? '#10B981' : '#EF4444'} />;
               })}
             </Bar>
           </BarChart>

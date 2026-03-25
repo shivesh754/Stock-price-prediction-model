@@ -7,3 +7,9 @@ tensorflow
 keras
 yfinance
 matplotlib
+flask-sqlalchemy
+flask-bcrypt
+pyjwt
+google-auth
+google-auth-oauthlib
+requests

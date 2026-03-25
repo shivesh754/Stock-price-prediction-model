@@ -1,24 +1,18 @@
 import { useState, useEffect } from 'react';
 import { format, subYears } from 'date-fns';
-import { DollarSign, TrendingUp, TrendingDown, Activity, RefreshCw } from 'lucide-react';
+import { DollarSign, TrendingUp, TrendingDown, Activity, RefreshCw, Search } from 'lucide-react';
 import { stockService } from '../services/api';
 import StockChart from '../components/StockChart';
 import MetricsCard from '../components/MetricsCard';
 import DateRangePicker from '../components/DateRangePicker';
 import LoadingSpinner from '../components/LoadingSpinner';
+import companiesData from '../data/companies.json';
 
-const POPULAR_STOCKS = [
-  { symbol: 'AAPL', name: 'Apple Inc.' },
-  { symbol: 'GOOGL', name: 'Alphabet Inc.' },
-  { symbol: 'MSFT', name: 'Microsoft' },
-  { symbol: 'TSLA', name: 'Tesla Inc.' },
-  { symbol: 'AMZN', name: 'Amazon' },
-  { symbol: 'RELIANCE.NS', name: 'Reliance Industries' },
-  { symbol: 'TCS.NS', name: 'TCS' },
-];
+const POPULAR_STOCKS = companiesData.slice(0, 1000);
 
 const Dashboard = () => {
-  const [symbol, setSymbol] = useState(POPULAR_STOCKS[0].symbol);
+  const [symbol, setSymbol] = useState(POPULAR_STOCKS[0]?.symbol || 'AAPL');
+  const [displayName, setDisplayName] = useState(`${POPULAR_STOCKS[0]?.name} (${POPULAR_STOCKS[0]?.symbol})` || 'Apple Inc. (AAPL)');
   
   // Default to 1 year back
   const today = new Date();
@@ -89,20 +83,31 @@ const Dashboard = () => {
         </div>
         
         <div className="flex items-center gap-3 w-full md:w-auto">
-          <div className="relative flex-1 md:w-64">
-            <select
-              value={symbol}
-              onChange={(e) => setSymbol(e.target.value)}
-              className="appearance-none input-field cursor-pointer font-semibold pr-10"
-            >
-              {POPULAR_STOCKS.map(stock => (
-                <option key={stock.symbol} value={stock.symbol} className="bg-dark-navy">
-                  {stock.symbol} - {stock.name}
-                </option>
+          <div className="relative flex-1 md:w-80">
+            <input
+              type="text"
+              list="dash-companies"
+              value={displayName}
+              onChange={(e) => {
+                const val = e.target.value;
+                setDisplayName(val);
+                const found = companiesData.find(c => `${c.name} (${c.symbol})` === val || c.symbol === val);
+                if (found) {
+                  setSymbol(found.symbol);
+                } else {
+                  setSymbol(val.toUpperCase());
+                }
+              }}
+              placeholder="Search symbol..."
+              className="input-field pr-10"
+            />
+            <datalist id="dash-companies">
+              {POPULAR_STOCKS.map(c => (
+                <option key={c.symbol} value={`${c.name} (${c.symbol})`} />
               ))}
-            </select>
-            <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-gray-400">
-              <TrendingUp className="w-4 h-4" />
+            </datalist>
+            <div className="absolute inset-y-0 right-0 flex items-center px-4 text-gray-400">
+              <Search className="w-4 h-4" />
             </div>
           </div>
           <button 

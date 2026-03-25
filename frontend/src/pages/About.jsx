@@ -36,7 +36,7 @@ const About = () => {
               <p className="text-sm text-gray-500 uppercase font-semibold tracking-wider">Supervisor</p>
               <p className="text-lg text-white flex items-center gap-2">
                 <Award className="w-4 h-4 text-yellow-500" />
-                Asst. Prof. Vivek Aggarwal
+                Asst. Prof. Mrs ANAM KHAN 
               </p>
             </div>
             
@@ -66,7 +66,7 @@ const About = () => {
                 </div>
                 <div>
                   <h3 className="text-xl font-medium">Shiwesh Kumar Mishra</h3>
-                  <p className="text-gray-400 text-sm">Frontend & ML Enthusiast</p>
+                  <p className="text-gray-400 text-sm">Frontend & ML Developer</p>
                 </div>
               </div>
               
@@ -76,7 +76,7 @@ const About = () => {
                 </div>
                 <div>
                   <h3 className="text-xl font-medium">Vansh Chaudhary</h3>
-                  <p className="text-gray-400 text-sm">Backend & ML Developer</p>
+                  <p className="text-gray-400 text-sm">Backend Developer</p>
                 </div>
               </div>
             </div>

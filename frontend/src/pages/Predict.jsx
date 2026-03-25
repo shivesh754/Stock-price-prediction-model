@@ -4,10 +4,12 @@ import PredictionChart from '../components/PredictionChart';
 import MetricsCard from '../components/MetricsCard';
 import ModelSelector from '../components/ModelSelector';
 import LoadingSpinner from '../components/LoadingSpinner';
-import { AlertCircle, Target, ArrowRight, Table as TableIcon, Calendar, Zap } from 'lucide-react';
+import { AlertCircle, Target, ArrowRight, Table as TableIcon, Calendar, Zap, Activity, Search } from 'lucide-react';
+import companiesData from '../data/companies.json';
 
 const Predict = () => {
   const [symbol, setSymbol] = useState('AAPL');
+  const [displayName, setDisplayName] = useState('Apple Inc. (US)');
   const [days, setDays] = useState('7');
   const [model, setModel] = useState('LSTM');
   const [models, setModels] = useState([]);
@@ -69,16 +71,35 @@ const Predict = () => {
             </h2>
             
             <form onSubmit={handlePredict} className="space-y-5">
-              <div>
-                <label className="block text-sm font-medium text-gray-300 mb-2">Stock Symbol</label>
-                <input 
-                  type="text" 
-                  value={symbol}
-                  onChange={(e) => setSymbol(e.target.value.toUpperCase())}
-                  placeholder="e.g., AAPL"
-                  className="input-field uppercase font-mono tracking-wider"
-                  required
-                />
+              <div className="flex flex-col gap-2">
+                <label className="text-sm font-medium text-gray-300">Stock Symbol</label>
+                <div className="relative">
+                  <input
+                    type="text"
+                    list="companies"
+                    value={displayName}
+                    onChange={(e) => {
+                      const val = e.target.value;
+                      setDisplayName(val);
+                      const found = companiesData.find(c => `${c.name} (${c.symbol})` === val || c.symbol === val);
+                      if (found) {
+                        setSymbol(found.symbol);
+                      } else {
+                        setSymbol(val.toUpperCase());
+                      }
+                    }}
+                    placeholder="Search or type symbol..."
+                    className="input-field pr-10"
+                  />
+                  <datalist id="companies">
+                    {companiesData.slice(0, 1000).map(c => (
+                      <option key={c.symbol} value={`${c.name} (${c.symbol})`} />
+                    ))}
+                  </datalist>
+                  <div className="absolute inset-y-0 right-0 flex items-center px-4 text-gray-400">
+                    <Search className="w-4 h-4" />
+                  </div>
+                </div>
               </div>
               
               <div>
@@ -188,10 +209,10 @@ const Predict = () => {
                       </tr>
                     </thead>
                     <tbody>
-                      {result.predicted_prices?.map((item, i) => {
+                      {result.future_forecast?.map((item, i) => {
                         const prevPrice = i === 0 
                           ? result.actual_prices[result.actual_prices.length - 1]?.price 
-                          : result.predicted_prices[i - 1]?.price;
+                          : result.future_forecast[i - 1]?.price;
                         
                         const isUp = item.price >= prevPrice;
                         
